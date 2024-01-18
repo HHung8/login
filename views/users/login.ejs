@@ -1,0 +1,23 @@
+<div class="d-flex align-items-center justify-content-center flex-column w-100" style="height: 100vh;">
+    <h2>Đăng nhập</h2>
+    <% if (loginError) { %>
+        <div class="alert alert-danger w-100" role="alert">
+            <%= loginError %>
+        </div>
+    <% } %>
+    <form action="/users/login" method="post" class="w-100">
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="user1@gmail.com" />
+            <!-- Display validation error for email -->
+            <span class="d-inline-block text-danger mt-3"><%= req.errors && req.errors.email %></span>
+        </div>
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password" value="abcd">
+            <!-- Display validation error for password -->
+            <span class="d-inline-block text-danger mt-3"><%= req.errors && req.errors.password %></span>
+        </div>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+</div>

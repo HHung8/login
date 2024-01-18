@@ -1,0 +1,26 @@
+<div class="d-flex align-items-center justify-content-center flex-column w-100" style="height: 100vh;">
+    <h2>Đăng Ký</h2>
+    <form action="/users/register" method="post" class="w-100">
+        <div class="mb-3">
+            <label for="name">FullName</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Name..." value="<%= req.oldData ? req.oldData.name : '' %>" />
+            <span class="d-inline-block text-danger mt-3"><%= req.errors ? req.errors.name : '' %></span>
+        </div>
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="email" placeholder="Email..." value="<%= req.oldData ? req.oldData.email : '' %>" />
+            <!-- Hiển thị thông báo khi có lỗi liên quan đến trường email -->
+            <% if (req.errors && req.errors.email && req.errors.email.includes("Email đã được đăng ký")) { %>
+                <span class="d-inline-block text-danger mt-3"><%= req.errors.email %></span>
+            <% } else { %>
+                <span class="d-inline-block text-danger mt-3"></span>
+            <% } %>
+        </div>
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password..." />
+            <span class="d-inline-block text-danger mt-3"><%= req.errors ? req.errors.password : '' %></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
